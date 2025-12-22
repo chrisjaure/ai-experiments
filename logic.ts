@@ -3,6 +3,7 @@ export interface User {
   isPremium: boolean;
   yearsActive: number;
   tags: string[];
+  referralCount?: number;
 }
 
 export function calculateFinalPrice(basePrice: number, user: User, couponCode?: string): number {
@@ -25,7 +26,18 @@ export function calculateFinalPrice(basePrice: number, user: User, couponCode?: 
     }
   }
 
-  // Rule 3: Coupon logic (Increases complexity through branching)
+  // Rule 3: Referral tier discount
+  if (user.referralCount) {
+    if (user.referralCount >= 11) {
+      discount += 0.10;
+    } else if (user.referralCount >= 6) {
+      discount += 0.05;
+    } else if (user.referralCount >= 1) {
+      discount += 0.02;
+    }
+  }
+
+  // Rule 4: Coupon logic (Increases complexity through branching)
   if (couponCode) {
     if (couponCode === 'SAVE20') {
       discount = Math.max(discount, 0.20);
@@ -38,7 +50,14 @@ export function calculateFinalPrice(basePrice: number, user: User, couponCode?: 
     }
   }
 
-  // Final sanity check
+  // Apply percentage discounts
   const finalDiscount = discount > 0.5 ? 0.5 : discount;
-  return basePrice * (1 - finalDiscount);
+  let finalPrice = basePrice * (1 - finalDiscount);
+
+  // Rule 5: Super-Referrer Bonus
+  if (user.referralCount && user.referralCount > 20 && user.isPremium) {
+    finalPrice -= 5.00;
+  }
+
+  return finalPrice;
 }
