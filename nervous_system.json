@@ -1,13 +1,10 @@
 {
   "files": {
     "logic.ts": {
-      "cognitive_complexity": 22,
-      "fan_out": 5,
-      "pheromone_strength": 0.8
+      "cognitive_complexity": 22
     }
   },
   "global_thresholds": {
-    "max_complexity": 25,
-    "max_fan_out": 6
+    "max_complexity": 25
   }
 }
