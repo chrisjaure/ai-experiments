@@ -6,6 +6,7 @@ describe("calculateFinalPrice", () => {
     id: "u1",
     isPremium: false,
     yearsActive: 1,
+    referralCount: 0,
     tags: [],
   };
 
@@ -127,5 +128,50 @@ describe("calculateFinalPrice", () => {
     };
     // 0.1 + 0.05 + 0.15 = 0.30
     expect(calculateFinalPrice(100, user, "SUMMER_FUN")).toBe(70);
+  });
+
+  it("should apply 2% discount for 1-5 referrals", () => {
+    const user = { ...baseUser, referralCount: 3 };
+    const price = calculateFinalPrice(100, user);
+    expect(price).toBe(98);
+  });
+
+  it("should apply 5% discount for 6-10 referrals", () => {
+    const user = { ...baseUser, referralCount: 8 };
+    const price = calculateFinalPrice(100, user);
+    expect(price).toBe(95);
+  });
+
+  it("should apply 10% discount for 11+ referrals", () => {
+    const user = { ...baseUser, referralCount: 15 };
+    const price = calculateFinalPrice(100, user);
+    expect(price).toBe(90);
+  });
+
+  it("should apply Super-Referrer bonus ($5 off) for >20 referrals and premium", () => {
+    // Premium (10%) + Referral > 11 (10%) = 20% discount.
+    // Price = 100 * (1 - 0.20) = 80.
+    // Super-Referrer Bonus = 80 - 5 = 75.
+    const user = { ...baseUser, isPremium: true, referralCount: 25 };
+    const price = calculateFinalPrice(100, user);
+    expect(price).toBe(75);
+  });
+
+  it("should NOT apply Super-Referrer bonus if not premium", () => {
+    // Referral > 11 (10%) = 10% discount.
+    // Price = 100 * (1 - 0.10) = 90.
+    // Not premium -> No extra $5 off.
+    const user = { ...baseUser, isPremium: false, referralCount: 25 };
+    const price = calculateFinalPrice(100, user);
+    expect(price).toBe(90);
+  });
+
+  it("should NOT apply Super-Referrer bonus if referrals <= 20", () => {
+    // Premium (10%) + Referral > 11 (10%) = 20% discount.
+    // Price = 100 * (1 - 0.20) = 80.
+    // Referrals 20 -> No extra $5 off (needs > 20).
+    const user = { ...baseUser, isPremium: true, referralCount: 20 };
+    const price = calculateFinalPrice(100, user);
+    expect(price).toBe(80);
   });
 });

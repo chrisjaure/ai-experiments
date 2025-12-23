@@ -2,6 +2,7 @@ export interface User {
   id: string;
   isPremium: boolean;
   yearsActive: number;
+  referralCount: number;
   tags: string[];
 }
 
@@ -11,6 +12,7 @@ export function getUserData(userId: string): Promise<User> {
     id: userId,
     isPremium: true,
     yearsActive: 5,
+    referralCount: 0,
     tags: ["developer", "blogger"],
   });
 }
