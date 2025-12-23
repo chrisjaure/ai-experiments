@@ -1,7 +1,10 @@
 {
   "files": {
     "logic.ts": {
-      "cognitive_complexity": 22
+      "cognitive_complexity": 12
+    },
+    "discountRules.ts": {
+      "cognitive_complexity": 18
     }
   },
   "global_thresholds": {

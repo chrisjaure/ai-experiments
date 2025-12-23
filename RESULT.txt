@@ -1,0 +1,28 @@
+╭────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                            │
+│  Agent powering down. Goodbye!                                                             │
+│                                                                                            │
+│  Interaction Summary                                                                       │
+│  Session ID:                 7e22023e-854d-4d1e-84dd-ce0e3a9fa638                          │
+│  Tool Calls:                 10 ( ✓ 9 x 1 )                                                │
+│  Success Rate:               90.0%                                                         │
+│  User Agreement:             90.0% (10 reviewed)                                           │
+│  Code Changes:               +199 -37                                                      │
+│                                                                                            │
+│  Performance                                                                               │
+│  Wall Time:                  7m 57s                                                        │
+│  Agent Active:               7m 19s                                                        │
+│    » API Time:               2m 33s (35.0%)                                                │
+│    » Tool Time:              4m 45s (65.0%)                                                │
+│                                                                                            │
+│                                                                                            │
+│  Model Usage                 Reqs   Input Tokens   Cache Reads  Output Tokens              │
+│  ────────────────────────────────────────────────────────────────────────────              │
+│  gemini-2.5-flash-lite          3         11,999             0            177              │
+│  gemini-3-pro-preview           8         34,166        34,315          2,738              │
+│  gemini-3-flash-preview         1          9,609             0            216              │
+│                                                                                            │
+│  Savings Highlight: 34,315 (38.1%) of input tokens were served from the cache, reducing    │
+│  costs.                                                                                    │
+│                                                                                            │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯

@@ -1,3 +1,11 @@
+export interface User {
+  id: string;
+  isPremium: boolean;
+  yearsActive: number;
+  tags: string[];
+  referralCount?: number;
+}
+
 export function formatCurrency(amount: number): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
