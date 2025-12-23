@@ -33,6 +33,6 @@ npm run quality-check
 ## Coding Conventions
 *   **Style**: Strictly adhere to Biome formatting rules.
 *   **Architecture**: Keep business logic separated from utility functions.
-*   **Complexity**: Be mindful of code complexity. The `nervous_system.json` file imposes thresholds. When adding features, ensure logic remains readable and doesn't exceed these limits. Refactor if necessary.
+*   **Complexity**: Be mindful of code complexity. When adding features, ensure logic remains readable and doesn't exceed these limits. Refactor if necessary.
 *   **Testing**: While no specific test runner is currently configured in `scripts`, code should be written to be easily testable.
 
