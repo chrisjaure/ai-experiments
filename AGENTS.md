@@ -10,9 +10,20 @@ This repository, `ai-experiments`, serves as a testing ground for AI agents to p
 *   **Type Checking:** Experimental `@typescript/native-preview` (using `tsgo` command)
 
 ## Key Files & Directories
-*   **`src/logic.ts`**: Contains the core business logic for calculating final prices, applying discounts, and handling coupons.
-*   **`src/utils.ts`**: Provides helper functions for formatting currency and logging.
+*   **`src/features/billing`**: Contains the core business logic for calculating final prices, applying discounts, and handling coupons.
+*   **`src/shared/user`**: Shared API for retrieving user data.
 *   **`biome.json`**: Configuration for the Biome linter and formatter.
+
+## Architecture
+**Modular Design**: The project is structured into distinct modules, separating business logic from utility functions and shared APIs.
+
+**Layers**:
+*   **Feature Layer**: Contains business logic. Features cannot import from other features.
+    * **Module**: Entry point for the feature. Can import from Logic and Utils layers.
+    * **Logic**: Implements core algorithms and rules. Can import from Utils and Shared layers.
+    * **Utils**: Helper functions supporting the logic. Can import from Shared layer.
+*   **Shared Layer**: Houses common utilities and APIs, such as user data retrieval.
+*   **App Layer**: Entry point for application execution (not fully implemented in this experiment).
 
 ## Development & Usage
 
