@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatCurrency } from "./utils.ts";
+import { formatCurrency } from "./billing-utils.ts";
 
 describe("formatCurrency", () => {
   it("should format numbers to USD currency", () => {

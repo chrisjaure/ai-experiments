@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { calculateFinalPrice, type User } from "./logic.ts";
+import { calculateFinalPrice } from "./billing-logic.ts";
 
 describe("calculateFinalPrice", () => {
-  const baseUser: User = {
+  const baseUser = {
     id: "u1",
     isPremium: false,
     yearsActive: 1,

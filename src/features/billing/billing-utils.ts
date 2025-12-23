@@ -1,3 +1,6 @@
+/*
+ * @package
+ */
 export function formatCurrency(amount: number): string {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -5,6 +8,9 @@ export function formatCurrency(amount: number): string {
   }).format(amount);
 }
 
+/*
+ * @package
+ */
 export function logCalculation(userId: string, result: number): void {
   console.log(
     `[Billing System] User: ${userId} - Final: ${formatCurrency(result)}`,

@@ -1,10 +1,8 @@
-export interface User {
-  id: string;
-  isPremium: boolean;
-  yearsActive: number;
-  tags: string[];
-}
+import type { User } from "../../shared/user/api.ts";
 
+/**
+ * @package
+ */
 export function calculateFinalPrice(
   basePrice: number,
   user: User,
